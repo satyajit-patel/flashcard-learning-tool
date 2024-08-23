@@ -1,7 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 export default function SignUpFour() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post("http://localhost:5000/api/v1/user/signup", {name, email, password})
+    .then((result) => {
+      // console.log(result);
+      // alert("user signed up");
+      navigate("/Signin");
+    })
+    .catch((err) => alert(err.message));
+  }
+
+  const navigate = useNavigate();
+
+  const handleSignin = () => {
+    navigate('/Signin');
+  };
+
   return (
     <section className="rounded-md bg-black/80 p-2">
       <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
@@ -27,11 +50,12 @@ export default function SignUpFour() {
               href="#"
               title=""
               className="font-medium text-black transition-all duration-200 hover:underline"
+              onClick={handleSignin}
             >
               Sign In
             </a>
           </p>
-          <form action="#" method="POST" className="mt-8">
+          <form action="" method="POST" className="mt-8" onSubmit={handleSubmit}>
             <div className="space-y-5">
               <div>
                 <label htmlFor="name" className="text-base font-medium text-gray-900">
@@ -42,8 +66,11 @@ export default function SignUpFour() {
                   <input
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="text"
+                    name='name'
+                    required
                     placeholder="Full Name"
                     id="name"
+                    onChange={(e) => setName(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -56,8 +83,11 @@ export default function SignUpFour() {
                   <input
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="email"
+                    name='email'
+                    required
                     placeholder="Email"
                     id="email"
+                    onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -72,14 +102,17 @@ export default function SignUpFour() {
                   <input
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="password"
+                    name='password'
+                    required
                     placeholder="Password"
                     id="password"
+                    onChange={(e) => setPassword(e.target.value)}
                   ></input>
                 </div>
               </div>
               <div>
                 <button
-                  type="button"
+                  type='submit'
                   className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                 >
                   Create Account <ArrowRight className="ml-2" size={16} />
@@ -87,7 +120,7 @@ export default function SignUpFour() {
               </div>
             </div>
           </form>
-          <div className="mt-3 space-y-3">
+          {/* <div className="mt-3 space-y-3">
             <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
@@ -120,7 +153,7 @@ export default function SignUpFour() {
               </span>
               Sign up with Facebook
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
