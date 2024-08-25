@@ -3,6 +3,8 @@ import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
+const URL = import.meta.env.VITE_URL;
+
 export default function SignUpFour() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -10,7 +12,7 @@ export default function SignUpFour() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/v1/user/signup", {name, email, password})
+    axios.post(`${URL}/user/signup`, {name, email, password})
     .then((result) => {
       // console.log(result);
       // alert("user signed up");

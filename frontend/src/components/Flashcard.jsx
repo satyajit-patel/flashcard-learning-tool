@@ -1,64 +1,40 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 
-const Flashcard = () => {
-  let [arr, setArr] = useState([]);
-  let [index, setIndex] = useState(0);
-  let [isFlip, setIsFlip] = useState(false);
+function Flashcard({ arr }) {
+    if(arr.length == 0) {
+        return (
+            <div className="flex flex-wrap justify-center items-center">
+                <div className="bg-red-600 h-60 text-white">
+                    No data found
+                </div>
+            </div>
+        );
+    }
 
-  const getArr = useCallback(() => {
-    // let ans = getCards();
-    let ans = [
-      { id: 'EG', que: 'How are you ?', ans: 'Fine' },
-      { id: 'US', que: 'How do you do ?', ans: 'How do you do' },
-      { id: 'US', que: 'Best Captain of Cricket ?', ans: 'MSD' },
-      { id: 'CI', que: 'How has hit 6 sixes in an over ?', ans: 'Yuvi' },
-      { id: 'GB', que: 'What is the best place to visit ?', ans: 'Home' },
-      { id: 'ES', que: 'Toby', ans: 'Tatnell' },
-      { id: 'LY', que: 'Emelia', ans: 'Aronowitz' },
-      { id: 'CO', que: 'Clare', ans: 'Faherty' },
-      { id: 'US', que: 'Ibby', ans: 'Broughton' }
-    ]
-    setArr(ans);
-    setIsFlip(false);
-    setIndex(0);
-  }, [arr, index, isFlip, setIsFlip, setArr]);
+    const [index, setIndex] = useState(0);
+    const [isFlip, setIsFlip] = useState(false);
+    const nextCard = () => {
+        setIsFlip(false);
+        setIndex((i) => (i+1) % arr.length);
+    };
+    const prevCard = () => {
+        setIsFlip(false);
+        setIndex((i) => ((i-1)+arr.length) % arr.length);
+    };
 
-
-  useEffect(() => {getArr()}, [setIndex, setIndex]);
-
-  if(arr.length === 0) {
-    return <div className='flex flex-wrap justify-center h-80 items-center'>
-      <div className='h-max w-max bg-red-500 text-xl text-center'>No Flashcards...</div>  
-    </div>;
-  }
-  let item = arr[index];
-
-  const handleNext = () => {
-    setIsFlip(false);
-    setIndex((prevIndex) => (prevIndex + 1) % arr.length);
-  };
-
-  const handleFlip = () => {
-    setIsFlip((prev) => !prev);
-  };
-
-  return (
-    <div className='flex justify-center'>
-
-      <div className="card bg-primary text-primary-content w-96">
-          <div className="card-body">
-              {(!isFlip) ? (<><h2 className="card-title">Question</h2><p>{item.que}</p></>) : (<><h2 className="card-title">Answar</h2><p>{item.ans}</p></>)}
-              <br />
-              <div className="card-actions justify-end">
-                  <button className="btn">Prev</button>
-                  <button className="btn" onClick={handleFlip}>Flip</button>
-                  <button className="btn" onClick={handleNext}>Next</button>
-              </div>
-          </div>
-      </div>
-
-    </div>
-  )
+    return (
+        <div className='flex flex-wrap justify-center items-center flex-col'>
+            <div className={`flashcard ${isFlip ? 'isFlip' : ''}`}>
+                <div className="front">{arr[index].quote}</div>
+                <div className="back">{arr[index].poet}</div>
+            </div>
+            <div className='flex justify-evenly p-2'>
+                <button onClick={prevCard} className="btn mx-2">Previous</button>
+                <button onClick={() => setIsFlip(!isFlip)} className="btn mx-2">Flip</button>
+                <button onClick={nextCard} className="btn mx-2">Next</button>
+            </div>
+        </div>
+    );
 }
 
-export default Flashcard
+export default Flashcard;

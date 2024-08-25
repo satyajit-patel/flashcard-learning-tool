@@ -2,16 +2,19 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({onLogout}) => {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const handleLogout = () => {
     onLogout();
     navigate('/Signup');
   };
-
   const handleFlash = () => {
     navigate('/Hero');
   };
+  const handleAdmin = () => {
+    navigate('/AdminDashboard');
+  };
+
 
   return (
     
@@ -27,7 +30,7 @@ const Navbar = ({onLogout}) => {
               <summary>Parent</summary>
               <ul className="bg-base-100 rounded-t-none p-2">
                 <li> <a href="https://en.wikipedia.org/wiki/Flashcard" target="_blank" rel="wikipedia">wiki</a></li>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">admin</a></li>
+                <li><a onClick={handleAdmin}>admin</a></li>
               </ul>
             </details>
           </li>

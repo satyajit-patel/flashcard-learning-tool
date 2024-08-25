@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import dotenv from 'dotenv';
+
+const URL = import.meta.env.VITE_URL;
 
 export default function SignUpFour({onSignin}) {
   const [email, setEmail] = useState();
@@ -9,7 +12,7 @@ export default function SignUpFour({onSignin}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/v1/user/signin", {email, password})
+    axios.post(`${URL}/user/signin`, {email, password})
     .then((result) => {
       // console.log(result);
       // alert("user signed up");
