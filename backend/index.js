@@ -32,6 +32,9 @@ app.use(cors());
 app.get("/", (req, res) => {
     res.send("YOU ARE UP");
 });
+app.get("/ping", (req, res) => {
+    res.send("PONG");
+});
 app.use("/api/v1/todo", todoRoute);
 app.use("/api/v1/user", userRoute);
 app.listen(PORT, () => {
