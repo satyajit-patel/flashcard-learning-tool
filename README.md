@@ -1,6 +1,6 @@
 # Flashcard Learning Tool
 
-![Flashcard Learning Tool](https://drive.google.com/file/d/1AxLIYyeSzcq6q92ho30IQI-MuYrL7VKo/view?usp=sharing)
+![Flashcard Learning Tool](./pic.png)
 
 ![Watch video](https://drive.google.com/file/d/14uvME-3Qc7SpxOG9geqIeaSUZ36T9565/view?usp=sharing)
 
