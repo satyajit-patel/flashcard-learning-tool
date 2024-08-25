@@ -46,7 +46,7 @@ function AdminDashboardUpdate({ flashcards=[], setFlashcards }) {
                     <label>Password:</label>
                     <input 
                     q   className='bg-green-300'
-                        type="text" 
+                        type="password" 
                         required 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 

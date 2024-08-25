@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-const URL = import.meta.env.VITE_URL;
+const URL = import.meta.env.VITE_URL_GLOBAL;
 
 export default function SignUpFour() {
   const [email, setEmail] = useState();
