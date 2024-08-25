@@ -22,6 +22,11 @@ dbConnect();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://flashcard-learning-tool-w6in-mg6m2e3at-satyajit-patels-projects.vercel.app'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    credentials: true,
+}));
 app.use(cors());
 
 app.get("/", (req, res) => {
