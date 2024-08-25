@@ -1,11 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({onLogout}) => {
+const Navbar = () => {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    onLogout();
     navigate('/Signup');
   };
   const handleFlash = () => {
@@ -13,6 +12,12 @@ const Navbar = ({onLogout}) => {
   };
   const handleAdmin = () => {
     navigate('/AdminDashboard');
+  };
+  const handleDelete = () => {
+    navigate('/AdminDashboardDelete');
+  };
+  const handleUpdate = () => {
+    navigate('/AdminDashboardUpdate');
   };
 
 
@@ -30,7 +35,9 @@ const Navbar = ({onLogout}) => {
               <summary>Parent</summary>
               <ul className="bg-base-100 rounded-t-none p-2">
                 <li> <a href="https://en.wikipedia.org/wiki/Flashcard" target="_blank" rel="wikipedia">wiki</a></li>
-                <li><a onClick={handleAdmin}>admin</a></li>
+                <li><a onClick={handleAdmin}>create</a></li>
+                <li><a onClick={handleDelete}>delete</a></li>
+                <li><a onClick={handleUpdate}>update</a></li>
               </ul>
             </details>
           </li>

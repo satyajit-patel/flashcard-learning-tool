@@ -1,4 +1,9 @@
-
+.flashcard-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
 .flashcard {
     width: 450px;

@@ -11,7 +11,7 @@ export const createFlashcard = async (flashcard) => {
 };
 
 export const updateFlashcard = async (id, flashcard) => {
-    const response = await axios.put(`http://localhost:5000/api/v1/todo/todos/${id}`, flashcard);
+    const response = await axios.patch(`http://localhost:5000/api/v1/todo/todos/${id}`, flashcard);
     return response.data;
 };
 

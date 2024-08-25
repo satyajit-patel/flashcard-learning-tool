@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createFlashcard, updateFlashcard, deleteFlashcard } from '../apis/Api';
+import { createFlashcard } from '../apis/Api';
 
 function AdminDashboard({ setFlashcards }) {
     const [quote, setQuestion] = useState('');
