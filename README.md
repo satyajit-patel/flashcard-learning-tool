@@ -2,7 +2,7 @@
 
 ![Flashcard Learning Tool](./pic.png)
 
-![Watch video](https://drive.google.com/file/d/14uvME-3Qc7SpxOG9geqIeaSUZ36T9565/view?usp=sharing)
+[Watch the video](https://drive.google.com/file/d/14uvME-3Qc7SpxOG9geqIeaSUZ36T9565/view?usp=sharing)
 
 Find the website live [here](https://flashcard-frontend-en54oi59n-satyajit-patels-projects.vercel.app/).
 
