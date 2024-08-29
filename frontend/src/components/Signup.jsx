@@ -54,7 +54,10 @@ export default function SignUpFour() {
               className="font-medium text-black transition-all duration-200 hover:underline"
               onClick={handleSignin}
             >
-              Sign In
+              <button class="bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:from-green-500 hover:to-blue-500 hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                LOG-IN
+              </button>
+
             </a>
           </p>
           <form action="" method="POST" className="mt-8" onSubmit={handleSubmit}>

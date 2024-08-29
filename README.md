@@ -4,7 +4,7 @@
 
 [Watch the video](https://drive.google.com/file/d/14uvME-3Qc7SpxOG9geqIeaSUZ36T9565/view?usp=sharing)
 
-Find the website live [here](https://flashcard-frontend-en54oi59n-satyajit-patels-projects.vercel.app/).
+Find the website live [here](https://flashcard-frontend-git-master-satyajit-patels-projects.vercel.app).
 
 
 ## 🚀 Overview
@@ -70,7 +70,7 @@ By working with this project, you'll gain hands-on experience with the following
 
 ## 🌐 Live Demo
 
-Find the website live [here](https://flashcard-frontend-en54oi59n-satyajit-patels-projects.vercel.app/).
+Find the website live [here](https://flashcard-frontend-git-master-satyajit-patels-projects.vercel.app).
 
 ---
 

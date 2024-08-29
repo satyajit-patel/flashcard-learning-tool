@@ -23,15 +23,17 @@ function Flashcard({ arr }) {
     };
 
     return (
-        <div className='flex flex-wrap justify-center items-center flex-col'>
-            <div className={`flashcard ${isFlip ? 'isFlip' : ''}`}>
-                <div className="front">{arr[index].quote}</div>
-                <div className="back">{arr[index].poet}</div>
-            </div>
-            <div className='flex justify-evenly p-2'>
-                <button onClick={prevCard} className="btn mx-2">Previous</button>
-                <button onClick={() => setIsFlip(!isFlip)} className="btn mx-2">Flip</button>
-                <button onClick={nextCard} className="btn mx-2">Next</button>
+        <div className='h-screen w-screen flex flex-wrap justify-center items-center bg-moonNight'>
+            <div className='flex flex-wrap justify-center items-center flex-col'>
+                <div className={`flashcard ${isFlip ? 'isFlip' : ''}`}>
+                    <div className="front">{arr[index].quote}</div>
+                    <div className="back">{arr[index].poet}</div>
+                </div>
+                <div className='flex justify-evenly p-2'>
+                    <button onClick={prevCard} className="btn mx-2">Previous</button>
+                    <button onClick={() => setIsFlip(!isFlip)} className="btn mx-2">Flip</button>
+                    <button onClick={nextCard} className="btn mx-2">Next</button>
+                </div>
             </div>
         </div>
     );
