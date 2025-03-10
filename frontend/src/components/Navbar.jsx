@@ -1,76 +1,103 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // For responsive mobile menu icon
 
 const Navbar = () => {
-  const navigate = useNavigate()
-
-  const handleHome = () => {
-    navigate('/Flashcard')
-  }
-  const handleCreate = () => {
-    navigate('/AdminDashboard')
-  }
-  const handleDelete = () => {
-    navigate('/AdminDashboardDelete')
-  }
-  const handleUpdate = () => {
-    navigate('/AdminDashboardUpdate')
-  }
-  const handleLogout = () => {
-    navigate('/Signin')
-  }
-  const handleAllFlashcards = () => {
-    navigate('/SeeAllCards')
-  }
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full bg-cobalt shadow-md">
-      <div className="flex flex-wrap justify-evenly">
-        <div className="flex flex-wrap">
-          <button 
-            onClick={handleHome}
-            className="p-[3px] relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-            <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
-              Flashcard
-            </div>
+    <div className="w-full bg-cobalt shadow-lg py-4">
+      <div className="flex justify-between items-center px-6 md:px-10">
+        {/* Logo / Home Button */}
+        <button
+          onClick={() => navigate("/Flashcard")}
+          className="relative px-6 py-2 text-white font-semibold text-lg transition duration-300 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg hover:opacity-90"
+        >
+          Flashcard
+        </button>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="text-white w-7 h-7" /> : <Menu className="text-white w-7 h-7" />}
           </button>
         </div>
-        <div className="flex space-x-4">
-          <button 
-            onClick={handleCreate}
-            className="px-6 py-2 bg-black text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-6">
+          <button
+            onClick={() => navigate("/AdminDashboard")}
+            className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
             Create
           </button>
           <button
-            onClick={handleAllFlashcards} 
-            className="px-6 py-2 bg-black text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+            onClick={() => navigate("/SeeAllCards")}
+            className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
             Read
           </button>
           <button
-            onClick={handleUpdate} 
-            className="px-6 py-2 bg-black text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+            onClick={() => navigate("/AdminDashboardUpdate")}
+            className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
             Update
           </button>
           <button
-            onClick={handleDelete} 
-            className="px-6 py-2 bg-black text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+            onClick={() => navigate("/AdminDashboardDelete")}
+            className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
             Delete
           </button>
         </div>
-        <div className="flex space-x-4">
+
+        {/* Desktop Logout Button */}
+        <button
+          onClick={() => navigate("/Signin")}
+          className="hidden md:block px-6 py-2 text-white font-bold rounded-full transition duration-300 bg-gradient-to-r from-red-500 to-pink-500 hover:opacity-90"
+        >
+          Logout
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="md:hidden flex flex-col items-center space-y-4 mt-4 pb-4 bg-cobalt">
           <button
-            onClick={handleLogout} 
-            className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-              Logout
-            </span>
+            onClick={() => navigate("/AdminDashboard")}
+            className="w-full text-center px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
+            Create
+          </button>
+          <button
+            onClick={() => navigate("/SeeAllCards")}
+            className="w-full text-center px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
+            Read
+          </button>
+          <button
+            onClick={() => navigate("/AdminDashboardUpdate")}
+            className="w-full text-center px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
+            Update
+          </button>
+          <button
+            onClick={() => navigate("/AdminDashboardDelete")}
+            className="w-full text-center px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+          >
+            Delete
+          </button>
+          <button
+            onClick={() => navigate("/Signin")}
+            className="w-full text-center px-6 py-2 text-white font-bold rounded-full transition duration-300 bg-gradient-to-r from-red-500 to-pink-500 hover:opacity-90"
+          >
+            Logout
           </button>
         </div>
-      </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

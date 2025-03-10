@@ -60,7 +60,7 @@ export const InfiniteMovingCards = ({
   };
 
   const deleteFlashcard = async (id) => {
-    await axios.delete(`${import.meta.env.VITE_URL_GLOBAL}/todo/todos/${id}`);
+    await axios.delete(`${import.meta.env.VITE_URL_GLOBAL}/api/v1/todo/todos/${id}`);
   };
   
 
@@ -84,7 +84,7 @@ export const InfiniteMovingCards = ({
     (<div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative bg-bl z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}>
       <ul

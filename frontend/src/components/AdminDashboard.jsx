@@ -18,9 +18,8 @@ function AdminDashboard({ setFlashcards }) {
     };
 
     return (
-        <div className='h-screen w-screen bg-moonNight flex flex-wrap justify-center items-center'>
+        <div className='bg-moonNight flex flex-wrap justify-center items-center'>
             <div className="admin-dashboard bg-moonGlow">
-                <h2 className='text-slate-400'>Admin Dashboard</h2>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"

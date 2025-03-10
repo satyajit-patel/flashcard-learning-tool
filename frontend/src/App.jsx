@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
-import './styles.css';
-import Signup from './components/Signup';
-import Signin from './components/Signin';
-import Flashcard from './components/Flashcard';
-import { fetchFlashcards } from './apis/Api';
-import AdminDashboardDelete from './components/AdminDashboardDelete';
-import AdminDashboardUpdate from './components/AdminDashboardUpdate';
-import {FlipWordsDemo} from './components/flipWords/FlipWordsDemo';
-import {MeteorsDemo} from './components/meteorEffect/MeteorsDemo';
-import Navbar from './components/Navbar';
-import SeeAllCards from './components/SeeAllcards';
+import "./styles.css";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
+import Flashcard from "./components/Flashcard";
+import { fetchFlashcards } from "./apis/Api";
+import AdminDashboardDelete from "./components/AdminDashboardDelete";
+import AdminDashboardUpdate from "./components/AdminDashboardUpdate";
+import { FlipWordsDemo } from "./components/flipWords/FlipWordsDemo";
+import { MeteorsDemo } from "./components/meteorEffect/MeteorsDemo";
+import Navbar from "./components/Navbar";
+import SeeAllCards from "./components/SeeAllcards";
 
 function AppContent() {
   const location = useLocation();
@@ -27,13 +27,14 @@ function AppContent() {
 
   useEffect(() => {
     memo();
-  }, [memo, setFlashcards]);
+  }, [memo]);
+
+  const hideNavbarRoutes = ["/Signin", "/Hero", "/Signup"];
 
   return (
-    <div className='h-screen w-screen flex flex-wrap justify-center items-center'>
-        
-      {location.pathname !== "/Signup" && location.pathname !== "/Hero" && location.pathname !== "/Signin" && <Navbar />}
-      
+    <div className="flex flex-wrap justify-center items-center bg-black">
+      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
+
       <div>
         <Routes>
           <Route path="/" element={<Navigate to="/Signin" />} />
